@@ -1,1 +1,29 @@
+# Task 2 — Formalize Constraints
 
+## Railway Level-Crossing Control System (ARLCCS)
+
+### Symbols
+
+| Symbol | Meaning |
+|---|---|
+| `Train_Present` | A train is present at the crossing. |
+| `Train_Approaching` | A train is approaching the crossing. |
+| `Barrier_Open` | The road barrier is open. |
+| `Barrier_Closed` | The road barrier is closed. |
+| `Warning_Active` | Warning lights and audible alarm are active. |
+| `Train_Cleared` | The system has confirmed that the train has completely cleared the crossing. |
+| `Sensor_Failure` | A train-detection sensor has failed. |
+| `Sensor_Valid` | Sensor readings are valid and consistent. |
+| `Emergency` | A critical emergency condition exists. |
+| `Communication_Lost` | Communication with the control center is lost. |
+| `Barrier_Failure` | The barrier has failed to perform its commanded operation. |
+| `Safe` | The crossing is confirmed safe for road traffic. |
+
+---
+
+## C1 — Barrier Must Not Open While Train Is Present
+
+### Formal Expression
+
+```text
+Train_Present → ¬Barrier_Open
