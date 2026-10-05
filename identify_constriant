@@ -1,1 +1,18 @@
+# Task 1 — Identify Constraints
 
+## Railway Level-Crossing Control System (ARLCCS)
+
+| Constraint ID | Constraint in Simple English | Why the Constraint is Necessary |
+|---|---|---|
+| **C1** | The barrier must not open while a train is present at the crossing. | Opening the barrier could allow road traffic to enter the crossing while the train is passing. |
+| **C2** | The barrier must be closed before a train enters the crossing. | This prevents vehicles and pedestrians from entering the crossing before the train arrives. |
+| **C3** | Warning lights and audible alarms must be activated when a train approaches. | Road users need enough warning to stop before the train reaches the crossing. |
+| **C4** | The barrier must remain closed while the train is passing through the crossing. | Opening the barrier during train movement could cause an accident. |
+| **C5** | The barrier must open only after the system confirms that the train has completely cleared the crossing. | This prevents the barrier from opening while part of the train is still in the crossing. |
+| **C6** | A sensor failure must not cause the barrier to open unsafely. | A failed sensor may provide incorrect information about the train's location. |
+| **C7** | Incorrect or invalid sensor readings must not be treated as confirmation that the train has cleared. | Incorrect readings could cause the barrier to open too early. |
+| **C8** | During an emergency, the system must put the crossing into a safe state. | Safety must be maintained even when normal operation is not possible. |
+| **C9** | Communication loss must not cause the barrier to open when the crossing status is uncertain. | The system must remain safe even when communication with the control center is unavailable. |
+| **C10** | A barrier failure must be detected by the safety-monitoring unit. | An undetected barrier failure could leave the crossing in an unsafe condition. |
+| **C11** | Warning signals must remain active while a train is present or the crossing is unsafe. | Road users must continue receiving warnings until it is safe to proceed. |
+| **C12** | Road traffic must not be allowed to enter when the crossing is unsafe. | This prevents road traffic from entering the crossing during dangerous conditions. |
