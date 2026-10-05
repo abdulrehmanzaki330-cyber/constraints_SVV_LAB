@@ -1,1 +1,278 @@
+# Task 3 — Identify Constraint Violations
+
+## Railway Level-Crossing Control System (ARLCCS)
+
+---
+
+## V1 — Violation of C1
+
+### Constraint
+
+```text
+Train_Present → ¬Barrier_Open
+```
+
+### Violation
+
+```text
+Train_Present = TRUE
+Barrier_Open = TRUE
+```
+
+### What Went Wrong?
+
+A train is present at the crossing, but the barrier is open.
+
+### How Do We Know It Is Violated?
+
+The constraint says that when a train is present, the barrier must not be open. Since both conditions are true, the constraint is violated.
+
+---
+
+## V2 — Violation of C2
+
+### Constraint
+
+```text
+Train_Approaching → Barrier_Closed
+```
+
+### Violation
+
+```text
+Train_Approaching = TRUE
+Barrier_Closed = FALSE
+```
+
+### What Went Wrong?
+
+A train is approaching, but the barrier is still open.
+
+### How Do We Know It Is Violated?
+
+The barrier must be closed when a train is approaching. Since it is not closed, the constraint is violated.
+
+---
+
+## V3 — Violation of C3
+
+### Constraint
+
+```text
+Train_Approaching → Warning_Active
+```
+
+### Violation
+
+```text
+Train_Approaching = TRUE
+Warning_Active = FALSE
+```
+
+### What Went Wrong?
+
+The system detected an approaching train but did not activate the warning lights or audible alarm.
+
+### How Do We Know It Is Violated?
+
+The warning must be active when a train is approaching. Since the warning is inactive, the constraint is violated.
+
+---
+
+## V4 — Violation of C4
+
+### Constraint
+
+```text
+Train_Present → Barrier_Closed
+```
+
+### Violation
+
+```text
+Train_Present = TRUE
+Barrier_Closed = FALSE
+```
+
+### What Went Wrong?
+
+A train is passing through the crossing while the barrier is not closed.
+
+### How Do We Know It Is Violated?
+
+The barrier must remain closed while a train is present. Since it is open, the constraint is violated.
+
+---
+
+## V5 — Violation of C5
+
+### Constraint
+
+```text
+Barrier_Open → Train_Cleared
+```
+
+### Violation
+
+```text
+Barrier_Open = TRUE
+Train_Cleared = FALSE
+```
+
+### What Went Wrong?
+
+The barrier opened before the system confirmed that the train had completely cleared the crossing.
+
+### How Do We Know It Is Violated?
+
+The barrier can open only after train clearance is confirmed. Since `Train_Cleared = FALSE`, the constraint is violated.
+
+---
+
+## V6 — Violation of C6
+
+### Constraint
+
+```text
+Sensor_Failure ∧ ¬Train_Cleared → ¬Barrier_Open
+```
+
+### Violation
+
+```text
+Sensor_Failure = TRUE
+Train_Cleared = FALSE
+Barrier_Open = TRUE
+```
+
+### What Went Wrong?
+
+A train-detection sensor failed, train clearance was not confirmed, but the barrier opened.
+
+### How Do We Know It Is Violated?
+
+The sensor has failed and the train has not been confirmed as cleared. Therefore, the barrier must not open. Since it opened, the constraint is violated.
+
+---
+
+## V7 — Violation of C7
+
+### Constraint
+
+```text
+¬Sensor_Valid → ¬Train_Cleared
+```
+
+### Violation
+
+```text
+Sensor_Valid = FALSE
+Train_Cleared = TRUE
+```
+
+### What Went Wrong?
+
+The sensor readings are invalid, but the system incorrectly confirms that the train has cleared.
+
+### How Do We Know It Is Violated?
+
+Invalid sensor readings cannot be used to confirm train clearance. Therefore, `Train_Cleared = TRUE` violates the constraint.
+
+---
+
+## V8 — Violation of C8
+
+### Constraint
+
+```text
+Emergency → ¬Safe
+```
+
+### Violation
+
+```text
+Emergency = TRUE
+Safe = TRUE
+```
+
+### What Went Wrong?
+
+A critical emergency exists, but the system still reports that the crossing is safe.
+
+### How Do We Know It Is Violated?
+
+When an emergency exists, the crossing must not be considered safe. Since `Safe = TRUE`, the constraint is violated.
+
+---
+
+## V9 — Violation of C9
+
+### Constraint
+
+```text
+Communication_Lost ∧ ¬Train_Cleared → ¬Barrier_Open
+```
+
+### Violation
+
+```text
+Communication_Lost = TRUE
+Train_Cleared = FALSE
+Barrier_Open = TRUE
+```
+
+### What Went Wrong?
+
+Communication with the control center is lost and train clearance has not been confirmed, but the barrier opens.
+
+### How Do We Know It Is Violated?
+
+When communication is lost and clearance is not confirmed, the barrier must not open. Since it opens, the constraint is violated.
+
+---
+
+## V10 — Violation of C10
+
+### Constraint
+
+```text
+Barrier_Failure → Safety_Monitor_Detects_Failure
+```
+
+### Violation
+
+```text
+Barrier_Failure = TRUE
+Safety_Monitor_Detects_Failure = FALSE
+```
+
+### What Went Wrong?
+
+The barrier failed to perform its commanded operation, but the safety-monitoring unit did not detect the failure.
+
+### How Do We Know It Is Violated?
+
+The system must detect a barrier failure. Since the failure was not detected, the constraint is violated.
+
+---
+
+## V11 — Violation of C11
+
+### Constraint
+
+```text
+Train_Present ∨ ¬Safe → Warning_Active
+```
+
+### Violation
+
+```text
+Train_Present = TRUE
+Safe = FALSE
+Warning_Active = FALSE
+```
+
+### What Went Wrong?
+
+A train is present and the crossing is unsafe, but the warning s
 
